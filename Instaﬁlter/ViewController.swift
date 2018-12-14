@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreImage
 
 class ViewController: UIViewController {
     
@@ -14,12 +15,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var intensity: UISlider!
     
     var currentImage: UIImage!
+    var context: CIContext!
+    var currentFilter: CIFilter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "YACIFP"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(importPicture))
+        
+        context = CIContext()
+        currentFilter = CIFilter(name: "CISepiaTone")
     }
     
     @objc func importPicture() {
@@ -27,6 +33,15 @@ class ViewController: UIViewController {
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
+    }
+    
+    func applyProcessing() {
+        currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey)
+        
+        if let cgimg = context.createCGImage(currentFilter.outputImage!, from: currentFilter.outputImage!.extent) {
+            let processedImage = UIImage(cgImage: cgimg)
+            imageView.image = processedImage
+        }
     }
 
     @IBAction func changeFilter(_ sender: UIButton) {
@@ -38,7 +53,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func intensityChanged(_ sender: UISlider) {
-        
+        applyProcessing()
     }
 }
 
@@ -49,5 +64,10 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         dismiss(animated: true)
         
         currentImage = image
+        
+        let beginImage = CIImage(image: currentImage)
+        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        
+        applyProcessing()
     }
 }
