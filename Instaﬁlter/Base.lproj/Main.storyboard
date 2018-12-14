@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEU-Lf-rFH">
-                                <rect key="frame" x="0.0" y="64" width="375" height="452.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="502"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WEe-Ug-h1M">
-                                        <rect key="frame" x="10" y="10" width="355" height="432.5"/>
+                                        <rect key="frame" x="10" y="10" width="355" height="482"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -34,7 +34,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="NWD-v4-Ha8">
-                                <rect key="frame" x="16" y="531.5" width="343" height="81"/>
+                                <rect key="frame" x="16" y="581" width="343" height="81"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q8C-nD-lHd">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
@@ -79,11 +79,11 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="NWD-v4-Ha8" secondAttribute="trailing" constant="16" id="3uo-v2-OW3"/>
                             <constraint firstItem="UEU-Lf-rFH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9qj-bd-6gp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NWD-v4-Ha8" secondAttribute="bottom" constant="5" id="ZgR-X5-2fx"/>
                             <constraint firstItem="UEU-Lf-rFH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eRn-uX-MYF"/>
                             <constraint firstItem="NWD-v4-Ha8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="gdE-fK-abl"/>
                             <constraint firstItem="NWD-v4-Ha8" firstAttribute="top" secondItem="UEU-Lf-rFH" secondAttribute="bottom" constant="15" id="kQf-va-dYY"/>
                             <constraint firstAttribute="trailing" secondItem="UEU-Lf-rFH" secondAttribute="trailing" id="kZ6-Qw-ohu"/>
-                            <constraint firstItem="UEU-Lf-rFH" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.75" id="qe6-Dg-hdB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
