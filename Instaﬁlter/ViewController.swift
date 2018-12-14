@@ -43,6 +43,34 @@ class ViewController: UIViewController {
             imageView.image = processedImage
         }
     }
+    
+    func setFilter(with action: UIAlertAction) {
+        guard currentImage != nil else {
+            return
+        }
+        
+        currentFilter = CIFilter(name: action.title!)
+        
+        let beginImage = CIImage(image: currentImage)
+        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+    }
+    
+    func changeFilter() {
+        let ac = UIAlertController(title: "Choose filter", message: nil, preferredStyle: .actionSheet)
+        // for iPads
+        ac.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        
+        ac.addAction(UIAlertAction(title: "CIBumpDictortion", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CIGaussianBlur", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CIPixellatte", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CISepiaTone", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CITwirlDictortion", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CIUnsharpMask", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CIVignette", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(ac, animated: true)
+    }
 
     @IBAction func changeFilter(_ sender: UIButton) {
         
